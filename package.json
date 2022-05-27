@@ -1,0 +1,19 @@
+{
+  "name": "pick-one",
+  "version": "1.0.0",
+  "description": "Pick the movie you like the most from the list to watch it",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gustavolvc/pick-one.git"
+  },
+  "author": "Gustavo Yunier Leyte-Vidal Chacón <glcdmx@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gustavolvc/pick-one/issues"
+  },
+  "homepage": "https://github.com/gustavolvc/pick-one#readme"
+}
