@@ -1,22 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pick One</title>
     <link rel="stylesheet" href="./css/normalize.css" />
-    <link rel="stylesheet" href="./css/main.css" />  
-</head>
-<body>
-    <header></header>
-    <main>
-        <section>
-            <article></article>
-        </section>
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&family=Roboto:wght@100;300;400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header id="headerContainer" class="header">
+      <h1 class="header__title header__title--bold-500">Pick One</h1>
+      <p class="header__text header__text--bold-600">Find your movies</p>
+      <div class="header__container">        
+        <input
+          class="header__containerInput header__containerInput--bgColor header__containerInput--textColor"
+          type="text"
+          placeholder="Search Here ..."
+        />
+        <span class="header__containerIcon"></span>
+      </div>
+    </header>
+    <main id="mainContainer" class="main">
+      <section class="main__categoriesPreview">
+        <article class="main__categoriesPreviewBtn"></article>
+      </section>
+      <section class="main__cards">
+        <article class="main__cardsCard"></article>
+      </section>
+      <section class="main__fullInfo">
+        <article class="main__fullInfoArticle"></article>
+      </section>
     </main>
-    <footer></footer>
+    <footer id="footerContainer" class="footer"></footer>
     <script src="./src/secrets.js"></script>
     <script src="./src/main.js"></script>
-</body>
+  </body>
 </html>

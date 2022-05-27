@@ -1,0 +1,82 @@
+:root {
+  --white: #ffffff;
+  --soft-white: #c9c8c8;
+  --dark: #3a3f47;
+  --darker: #242a32;
+  --light-green: #3dbd93;
+  --sm: 1.4rem;
+  --md: 1.6rem;
+  --lg: 1.8rem;
+}
+body {
+  background-color: var(--darker);
+  color: var(--soft-white);
+  font-size: var(--md);
+  min-width: 320px;
+}
+
+.header {
+  margin: 0 20px 10px 20px;
+  
+}
+
+.header__title {
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  
+}
+
+.header__title--bold-500{
+  font-weight: 500;
+}
+
+.header__text{
+  margin-bottom: 10px;
+  font-size: var(--lg);
+}
+
+.header__text--bold-600{
+  font-weight: 600;
+}
+
+.header__container {
+  border-radius: 15px;  
+  border: 1px solid var(--dark);
+  display: flex;
+  justify-content: baseline;  
+}
+.header__container:hover {
+  box-shadow: 0 1px 5px 0 var(--light-green);
+  border-color: var(--light-green);
+}
+
+.header__containerInput {
+  width: 240px;
+  height: 35px;
+  padding: 0 15px;
+  border: none;
+  outline: none;
+  border-radius: 14px 0 0 14px;
+  flex: 1;
+}
+
+.header__containerInput--bgColor {
+  background-color: var(--dark);
+}
+
+.header__containerInput--textColor {
+  color: var(--soft-white);
+}
+
+.header__containerIcon {   
+  margin: 0 10px;
+  width: 20px;
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Vector_search_icon.svg/945px-Vector_search_icon.svg.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;  
+}
+
+.header__containerIcon:hover {
+  cursor: pointer;
+}
