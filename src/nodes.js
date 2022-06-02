@@ -14,6 +14,9 @@ const sectionCards = document.querySelector(
 const sectionCategories = document.querySelector(
   "#mainContainer .main_sectionCategories"
 );
+const sectionFullInfo = document.querySelector(
+  "#mainContainer .main__fullInfo"
+);
 
 
 const trendsPreview = document.querySelector(
@@ -24,7 +27,9 @@ const categoriesPreview = document.querySelector(
 );
 const cardsCard = document.querySelector("#mainContainer .main__cardsCard");
 const cardsHead = document.querySelector("#mainContainer .main__cardsHead");
-
+const fullInfoArticle = document.querySelector(
+  "#mainContainer .main__fullInfoArticle"
+);
 
 const searchBtn = document.querySelector(
   "#headerContainer .header__containerIcon"
@@ -41,4 +46,6 @@ const cardsHeadTitle = document.querySelector(
 const backBtn = document.querySelector(
   "#mainContainer .main__backBtn"
 );
+const infoBackBtn = document.querySelector("#mainContainer .main__infoBackBtn");
+
 

@@ -88,9 +88,6 @@ body {
   cursor: pointer;
 }
 
-.main {
-  margin: 0 20px;
-}
 .main_text {
   margin-top: 20px;
   margin-bottom: 5px;
@@ -125,14 +122,15 @@ body {
 }
 
 .main__categoriesPreviewBtn:hover,
-.main__trendsBtn:hover,.main__backBtn:hover {
+.main__trendsBtn:hover,
+.main__backBtn:hover {
   box-shadow: 0 1px 5px var(--light-green);
   color: var(--light-green);
   cursor: pointer;
 }
 
 .main_sectionTrends {
-  margin: 20px 0 12px 0;
+  margin: 20px 20px 12px 20px;
 }
 
 .main_sectionTrends::-webkit-scrollbar {
@@ -184,6 +182,11 @@ body {
   box-shadow: 0 1px 5px 0 var(--light-green);
 }
 
+.main_sectionCategories,
+.main__sectionCards {
+  margin: 0 20px;
+}
+
 .main_cardsHeadTitle {
   font-family: var(--font-family-title);
   font-weight: 600;
@@ -199,21 +202,21 @@ body {
   right: 3px;
 }
 
-.main__cardContainer{
+.main__cardContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
-.main__cardImg{
+.main__cardImg {
   width: 250px;
   border-radius: 20px 20px 0 0;
   box-shadow: 0 1px 3px 0 var(--light-green);
   object-fit: contain;
 }
 
-.main__cardContainerInfo{
+.main__cardContainerInfo {
   width: 250px;
   height: 150px;
   border-radius: 0 0 20px 20px;
@@ -224,25 +227,25 @@ body {
   box-shadow: 0 1px 3px 0 var(--light-green);
 }
 
-.main__cardTitleText{
+.main__cardTitleText {
   font-size: var(--lg);
   font-weight: 700;
   color: var(--light-green);
   margin-bottom: 10px;
 }
 
-.main__cardReleaseDate{
-  font-size: var(--sm); 
- display: inline-block;
+.main__cardReleaseDate {
+  font-size: var(--sm);
+  display: inline-block;
   margin-right: 5px;
 }
 
-.main__cardReleaseDateText{
+.main__cardReleaseDateText {
   display: inline-block;
- font-size: var(--md); 
+  font-size: var(--md);
 }
 
-.main__cardInfoSecundary{
+.main__cardInfoSecundary {
   display: flex;
   justify-content: space-around;
   align-items: flex-end;
@@ -251,7 +254,7 @@ body {
   color: var(--light-green);
 }
 
-.main__cardInfoSecundaryStar{
+.main__cardInfoSecundaryStar {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -261,4 +264,121 @@ body {
   display: none;
 }
 
+.main__fullInfoArticle {
+  display: grid;
+  grid-template-areas:
+    "back-poster back-poster"
+    "poster icons"
+    "title title"
+    "genres genres"
+    "overview overview"
+    "release-date rate-count"
+    "relelated-text relelated-text"
+    "relelated-movies relelated-movies"
+    "back-btn back-btn";
+  grid-auto-columns: 130px auto;
+}
 
+.main__infoBackPoster {
+  grid-area: back-poster;
+  object-fit: cover;
+  width: 100%;
+  border-radius: 0 0 15px 15px;
+  opacity: 0.5;
+}
+
+.main__infoPoster {
+  grid-area: poster;
+  object-fit: contain;
+  height: 150px;
+  border-radius: 10px;
+  box-shadow: 0 1px 2px 0 var(--light-green);
+  margin-left: 15px;
+  position: absolute;
+  top: 100px;
+  display: block;
+}
+
+.main__infoIcons {
+  grid-area: icons;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  margin: 20px 0;
+  color: var(--light-green);
+}
+
+.main__infoTitle {
+  grid-area: title;
+  margin: 10px 15px;
+  color: var(--light-green);
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: var(--lg);
+}
+
+.main__infoGenres {
+  grid-area: genres;
+  color: var(--light-green);
+  margin-left: 15px;
+}
+
+.main__infoOverview {
+  grid-area: overview;
+  margin: 5px 15px;
+  text-align: justify;
+  line-height: 1.5;
+}
+
+.main__infoReleaseDate {
+  grid-area: release-date;
+  margin: 15px;
+}
+
+.main__infoRateCount {
+  grid-area: rate-count;
+  text-align: end;
+  margin: 15px;
+}
+
+.main__infoRelatedMoviesText{
+  grid-area: relelated-text;
+  font-size: var(--lg);
+  font-weight: 700;
+  margin: 20px 15px 10px 15px;
+}
+
+.main__infoRelatedMovies {
+  grid-area: relelated-movies;
+  margin: 0 15px;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+
+.main__infobackBtn {
+  grid-area: back-btn;
+  width: 100px;
+  height: 32px;
+  background-color: var(--dark);
+  border: none;
+  font-size: var(--sm);
+  color: var(--soft-white);
+  border-radius: 16px;
+  text-align: center;
+  margin: 25px 15px 30px 15px;
+}
+
+.main__infobackBtn:hover {
+  grid-area: back-btn;
+  box-shadow: 0 1px 5px var(--light-green);
+  color: var(--light-green);
+  cursor: pointer;
+}
+
+.main__infobackBtnIcon {
+  grid-area: back-btn;
+  position: relative;
+  top: 2px;
+  right: 3px;
+}
