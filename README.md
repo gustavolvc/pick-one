@@ -7,3 +7,9 @@ Web to consult movies, requesting the movies from the public API https://develop
 * HTML5
 * CSS3
 * JAVASCRIPT
+    * ASYNC/AWAIT
+        * FETCH
+        * AXIOS
+    * DOM MANIPULATION
+    * ARRAYS MANIPULATION
+    * LOCATION
