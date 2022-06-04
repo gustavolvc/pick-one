@@ -14,3 +14,4 @@ Web to consult movies, requesting them from the public API https://themoviedb.or
     * DOM MANIPULATION
     * ARRAYS MANIPULATION
     * LOCATION
+    * LAZY LOADING WITH INTERCEPTION OBSERVER

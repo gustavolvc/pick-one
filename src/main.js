@@ -8,7 +8,16 @@ const api = axios.create({
   },
 });
 
-async function createCardsMovies(movies) {
+let lazyLoading = new IntersectionObserver((movies) => {
+  movies.forEach((movie) => {
+    if (movie.isIntersecting) {
+      const url = movie.target.getAttribute("data-img");
+      movie.target.setAttribute("src", url);
+    }
+  });
+});
+
+async function createCardsMovies(movies, lazyLoad = false) {
   cardsCard.innerHTML = "";
   movies.forEach((movie) => {
     const cardContainer = document.createElement("div");
@@ -16,17 +25,22 @@ async function createCardsMovies(movies) {
     const movieImg = document.createElement("img");
     movieImg.classList.add("main__cardImg");
     movieImg.setAttribute("alt", movie.title);
-    if (movie.poster_path) {
+
+    movieImg.setAttribute(
+      lazyLoad ? "data-img" : "src",
+      `https://image.tmdb.org/t/p/w300${movie.poster_path}`
+    );
+    movieImg.addEventListener("error", () => {
       movieImg.setAttribute(
         "src",
-        `https://image.tmdb.org/t/p/w300${movie.poster_path}`
+        "https://cdn4.iconfinder.com/data/icons/ui-beast-4/32/Ui-12-512.png"
       );
-    } else {
-      movieImg.setAttribute(
-        "src",
-        `https://cdn4.iconfinder.com/data/icons/ui-beast-4/32/Ui-12-512.png`
-      );
+    });
+
+    if (lazyLoad) {
+      lazyLoading.observe(movieImg);
     }
+
     movieImg.addEventListener("click", () => {
       location.hash = "#movie=" + movie.id;
     });
@@ -78,7 +92,7 @@ async function createCardsMovies(movies) {
 async function getTrendingMovies() {
   const { data } = await api("trending/movie/day");
   const movies = data.results;
-  createCardsMovies(movies);
+  createCardsMovies(movies, true);
 }
 
 async function getMoviesByCategory(id) {
@@ -88,26 +102,31 @@ async function getMoviesByCategory(id) {
     },
   });
   const movies = data.results;
-  createCardsMovies(movies);
+  createCardsMovies(movies, true);
 }
 
-function createImgList(movies, container) {
+function createImgList(movies, container, lazyLoad = false) {
   trendsPreview.innerHTML = "";
   movies.forEach((movie, index) => {
     const img = document.createElement("img");
     img.classList.add("main__trendsPreviewImg");
     img.setAttribute("alt", movie.title);
-    if (movie.poster_path) {
+
+    img.setAttribute(
+      lazyLoad ? "data-img" : "src",
+      `https://image.tmdb.org/t/p/w300${movie.poster_path}`
+    );
+    img.addEventListener("error", () => {      
       img.setAttribute(
         "src",
-        `https://image.tmdb.org/t/p/w300${movie.poster_path}`
+        "https://cdn4.iconfinder.com/data/icons/ui-beast-4/32/Ui-12-512.png"
       );
-    } else {
-      img.setAttribute(
-        "src",
-        `https://cdn4.iconfinder.com/data/icons/ui-beast-4/32/Ui-12-512.png`
-      );
+    });
+
+    if (lazyLoad) {
+      lazyLoading.observe(img);
     }
+
     img.addEventListener("click", () => {
       location.hash = "#movie=" + movie.id;
     });
@@ -132,16 +151,16 @@ function createGenreButtons(genres, container) {
   return container;
 }
 
-async function getGenreButtons() {  
+async function getGenreButtons() {
   const { data } = await api("genre/movie/list");
   const genres = data.genres;
   createGenreButtons(genres, categories);
 }
 
-async function createTrendsPreview() {  
+async function createTrendsPreview() {
   const { data } = await api("trending/movie/day");
   const movies = data.results;
-  createImgList(movies, trendsPreview);
+  createImgList(movies, trendsPreview, true);
 }
 
 async function getMoviesBySearch(query) {
@@ -151,7 +170,7 @@ async function getMoviesBySearch(query) {
     },
   });
   const movies = data.results;
-  createCardsMovies(movies);
+  createCardsMovies(movies, true);
 }
 
 async function getRelatedMoviesId(id) {
@@ -163,7 +182,7 @@ async function getRelatedMoviesId(id) {
     const infoRelatedMoviesContainer = document.createElement("div");
     infoRelatedMoviesContainer.classList.add("main__infoRelatedMovies");
     let infoRelatedMovies = document.createElement("figure");
-    infoRelatedMovies = createImgList(movies, infoRelatedMovies);
+    infoRelatedMovies = createImgList(movies, infoRelatedMovies, true);
     infoRelatedMoviesContainer.appendChild(infoRelatedMovies);
     return infoRelatedMoviesContainer;
   }
@@ -180,6 +199,12 @@ async function getMovieById(id) {
     "src",
     `https://image.tmdb.org/t/p/w300${movie.backdrop_path}`
   );
+  backPosterImg.addEventListener("error", () => {
+    backPosterImg.setAttribute(
+      "src",
+      "https://cdn4.iconfinder.com/data/icons/ui-beast-4/32/Ui-12-512.png"
+    );
+  });
 
   const posterImg = document.createElement("img");
   posterImg.classList.add("main__infoPoster");
@@ -188,6 +213,12 @@ async function getMovieById(id) {
     "src",
     `https://image.tmdb.org/t/p/w300${movie.poster_path}`
   );
+  posterImg.addEventListener("error", () => {
+    posterImg.setAttribute(
+      "src",
+      "https://cdn4.iconfinder.com/data/icons/ui-beast-4/32/Ui-12-512.png"
+    );
+  });
 
   const title = document.createElement("p");
   title.innerText = movie.title;
