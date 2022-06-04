@@ -92,6 +92,7 @@ async function getMoviesByCategory(id) {
 }
 
 function createImgList(movies, container) {
+  trendsPreview.innerHTML = "";
   movies.forEach((movie, index) => {
     const img = document.createElement("img");
     img.classList.add("main__trendsPreviewImg");
@@ -116,10 +117,11 @@ function createImgList(movies, container) {
 }
 
 function createGenreButtons(genres, container) {
+  categories.innerHTML = "";
   genres.forEach((genre, index) => {
     const btn = document.createElement("button");
     btn.type = "button";
-    btn.classList.add("main__categoriesPreviewBtn");
+    btn.classList.add("main__categoriesBtn");
     btn.innerText = genre.name;
     btn.setAttribute("id", "id" + genre.id);
     btn.addEventListener("click", () => {
@@ -130,15 +132,13 @@ function createGenreButtons(genres, container) {
   return container;
 }
 
-async function getGenreButtons() {
-  categoriesPreview.innerHTML = "";
+async function getGenreButtons() {  
   const { data } = await api("genre/movie/list");
   const genres = data.genres;
-  createGenreButtons(genres, categoriesPreview);
+  createGenreButtons(genres, categories);
 }
 
-async function createTrendsPreview() {
-  trendsPreview.innerHTML = "";
+async function createTrendsPreview() {  
   const { data } = await api("trending/movie/day");
   const movies = data.results;
   createImgList(movies, trendsPreview);

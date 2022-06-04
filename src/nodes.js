@@ -22,8 +22,8 @@ const sectionFullInfo = document.querySelector(
 const trendsPreview = document.querySelector(
   "#mainContainer .main__trendsPreview"
 );
-const categoriesPreview = document.querySelector(
-  "#mainContainer .main__categoriesPreview"
+const categories = document.querySelector(
+  "#mainContainer .main__categories"
 );
 const cardsCard = document.querySelector("#mainContainer .main__cardsCard");
 const cardsHead = document.querySelector("#mainContainer .main__cardsHead");
@@ -34,8 +34,8 @@ const fullInfoArticle = document.querySelector(
 const searchBtn = document.querySelector(
   "#headerContainer .header__containerIcon"
 );
-const categoriesPreviewBtn = document.querySelector(
-  "#mainContainer .main__categoriesPreviewBtn"
+const categoriesBtn = document.querySelector(
+  "#mainContainer .main__categoriesBtn"
 );
 const trendsBtn = document.querySelector(
   "#mainContainer .main__trendsBtn"

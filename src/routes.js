@@ -1,5 +1,8 @@
 searchBtn.addEventListener("click", () => {
-  location.hash = "#search=" + headerInput.value;
+  
+  if (headerInput.value.length > 0) {
+    location.hash = "#search=" + headerInput.value;
+  }
 });
 headerInput.addEventListener("keypress", function (event) {
   if (event.keyCode === 13) {
@@ -21,7 +24,7 @@ backBtn.addEventListener("click", () => {
   } else {
     window.history.back();
   }
-  headerInput.value="";
+  headerInput.value = "";
 });
 
 // window.addEventListener("DOMContentLoaded", routing, false);
@@ -90,7 +93,6 @@ function searchPage() {
   getMoviesBySearch(query[1]);
 }
 
-
 function movieFullInfoPage() {
   headerContainer.classList.add("inactive");
   sectionTrends.classList.add("inactive");
@@ -98,7 +100,7 @@ function movieFullInfoPage() {
   cardsHead.classList.add("inactive");
   cardsCard.classList.add("inactive");
   sectionFullInfo.classList.remove("inactive");
-  
+
   const movieId = location.hash.split("=");
   getMovieById(movieId[1]);
 }
