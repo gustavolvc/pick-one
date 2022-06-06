@@ -17,8 +17,44 @@ let lazyLoading = new IntersectionObserver((movies) => {
   });
 });
 
-async function createCardsMovies(movies, lazyLoad = false) {
-  cardsCard.innerHTML = "";
+function createImgList(movies, container, { lazyLoad = false }) {
+  trendsPreview.innerHTML = "";
+  movies.forEach((movie, index) => {
+    const img = document.createElement("img");
+    img.classList.add("main__trendsPreviewImg");
+    img.setAttribute("alt", movie.title);
+
+    img.setAttribute(
+      lazyLoad ? "data-img" : "src",
+      `https://image.tmdb.org/t/p/w300${movie.poster_path}`
+    );
+    img.addEventListener("error", () => {
+      img.setAttribute(
+        "src",
+        "https://cdn4.iconfinder.com/data/icons/ui-beast-4/32/Ui-12-512.png"
+      );
+    });
+
+    if (lazyLoad) {
+      lazyLoading.observe(img);
+    }
+
+    img.addEventListener("click", () => {
+      location.hash = "#movie=" + movie.id;
+    });
+    container.appendChild(img);
+  });
+  return container;
+}
+
+
+async function createCardsMovies(
+  movies,
+  { lazyLoad = false, clean = true } = {}
+) {
+  if (clean) {
+    cardsCard.innerHTML = "";
+  }
   movies.forEach((movie) => {
     const cardContainer = document.createElement("div");
     cardContainer.classList.add("main__cardContainer");
@@ -89,11 +125,35 @@ async function createCardsMovies(movies, lazyLoad = false) {
   });
 }
 
+
+async function createTrendsPreview() {
+  const { data } = await api("trending/movie/day");
+  const movies = data.results;
+  createImgList(movies, trendsPreview, { lazyLoad: true });
+}
 async function getTrendingMovies() {
   const { data } = await api("trending/movie/day");
   const movies = data.results;
-  createCardsMovies(movies, true);
+  totalPages = data.total_pages;
+
+  createCardsMovies(movies, { lazyLoad: true });
 }
+async function getPaginatedTrendingMovies() {
+  const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+  const scrollIsBottom = scrollTop + clientHeight >= scrollHeight - 5;
+  const finalPage = page <= totalPages;
+  if (scrollIsBottom && finalPage) {
+    page++;
+    const { data } = await api("trending/movie/day", {
+      params: {
+        page,
+      },
+    });
+    const movies = data.results;
+    createCardsMovies(movies, { lazyLoad: true, clean: false });
+  }
+}
+
 
 async function getMoviesByCategory(id) {
   const { data } = await api("discover/movie", {
@@ -102,38 +162,28 @@ async function getMoviesByCategory(id) {
     },
   });
   const movies = data.results;
-  createCardsMovies(movies, true);
+  totalPages = data.total_pages;
+  createCardsMovies(movies, { lazyLoad: true });
 }
-
-function createImgList(movies, container, lazyLoad = false) {
-  trendsPreview.innerHTML = "";
-  movies.forEach((movie, index) => {
-    const img = document.createElement("img");
-    img.classList.add("main__trendsPreviewImg");
-    img.setAttribute("alt", movie.title);
-
-    img.setAttribute(
-      lazyLoad ? "data-img" : "src",
-      `https://image.tmdb.org/t/p/w300${movie.poster_path}`
-    );
-    img.addEventListener("error", () => {      
-      img.setAttribute(
-        "src",
-        "https://cdn4.iconfinder.com/data/icons/ui-beast-4/32/Ui-12-512.png"
-      );
-    });
-
-    if (lazyLoad) {
-      lazyLoading.observe(img);
+function getPaginatedMoviesByCategory(id) {
+  return async function () {
+    const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+    const scrollIsBottom = scrollTop + clientHeight >= scrollHeight - 5;
+    const finalPage = page <= totalPages;
+    if (scrollIsBottom && finalPage) {
+      page++;
+      const { data } = await api("discover/movie", {
+        params: {
+          with_genres: id,
+          page,
+        },
+      });
+      const movies = data.results;
+      createCardsMovies(movies, { lazyLoad: true, clean: false });
     }
-
-    img.addEventListener("click", () => {
-      location.hash = "#movie=" + movie.id;
-    });
-    container.appendChild(img);
-  });
-  return container;
+  };
 }
+
 
 function createGenreButtons(genres, container) {
   categories.innerHTML = "";
@@ -150,18 +200,13 @@ function createGenreButtons(genres, container) {
   });
   return container;
 }
-
 async function getGenreButtons() {
   const { data } = await api("genre/movie/list");
   const genres = data.genres;
   createGenreButtons(genres, categories);
 }
 
-async function createTrendsPreview() {
-  const { data } = await api("trending/movie/day");
-  const movies = data.results;
-  createImgList(movies, trendsPreview, true);
-}
+
 
 async function getMoviesBySearch(query) {
   const { data } = await api("search/movie", {
@@ -170,23 +215,53 @@ async function getMoviesBySearch(query) {
     },
   });
   const movies = data.results;
-  createCardsMovies(movies, true);
+  totalPages = data.total_pages;
+  if (movies.length>0) {
+    createCardsMovies(movies, { lazyLoad: true });
+  } else {
+    const noDataMessage = document.createElement("h3");
+    noDataMessage.innerText = "There are no matches. Please go back and search for movies with another name";
+    cardsCard.innerHTML = "";
+    cardsCard.appendChild(noDataMessage);
+  }
 }
+function getPaginatedMoviesBySearch(query) {
+  return async function () {
+    const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+    const scrollIsBottom = scrollTop + clientHeight >= scrollHeight - 5;
+    const finalPage = page <= totalPages;
+    if (scrollIsBottom && finalPage) {
+      page++;
+      const { data } = await api("search/movie", {
+        params: {
+          query,
+          page,
+        },
+      });
+      const movies = data.results;
+      createCardsMovies(movies, { lazyLoad: true, clean: false });
+    }
+  }
+}
+
 
 async function getRelatedMoviesId(id) {
   const { data } = await api(`movie/${id}/recommendations`);
   const movies = data.results;
-  if (movies.length === 0) {
-    return 0;
-  } else {
+  if (movies.length > 0) {
     const infoRelatedMoviesContainer = document.createElement("div");
     infoRelatedMoviesContainer.classList.add("main__infoRelatedMovies");
     let infoRelatedMovies = document.createElement("figure");
-    infoRelatedMovies = createImgList(movies, infoRelatedMovies, true);
+    infoRelatedMovies = createImgList(movies, infoRelatedMovies, {
+      lazyLoad: true,
+    });
     infoRelatedMoviesContainer.appendChild(infoRelatedMovies);
     return infoRelatedMoviesContainer;
+  } else {
+    return 0;
   }
 }
+
 
 async function getMovieById(id) {
   fullInfoArticle.innerHTML = "";

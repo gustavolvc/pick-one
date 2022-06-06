@@ -1,17 +1,17 @@
 # Pick One
 
-Pick the movie you like the most from the list.
+Pick the movie you like from the app.
 
-Web to consult movies, requesting them from the public API https://themoviedb.org, using some technologies for web development such as:
+App to consult movies, requesting them from the public API https://themoviedb.org, using some technologies for web development such as:
 
 * HTML5
 * CSS3
     * LOADING SKELETON
 * JAVASCRIPT
     * ASYNC/AWAIT
-        * FETCH
         * AXIOS
     * DOM MANIPULATION
     * ARRAYS MANIPULATION
-    * LOCATION
+    * NAVIGATION WITH LOCATION (HASH)
     * LAZY LOADING WITH INTERCEPTION OBSERVER
+    * INFINITE SCROLL
