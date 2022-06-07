@@ -1,6 +1,6 @@
 {
   "name": "pick-one",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Pick the movie you like the most from the list to watch it",
   "main": "index.html",
   "scripts": {

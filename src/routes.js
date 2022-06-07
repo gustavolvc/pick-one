@@ -70,6 +70,7 @@ function activeInactive(text) {
   sectionTrends.classList.add("inactive");
   sectionCategories.classList.add("inactive");
   sectionFullInfo.classList.add("inactive");
+  sectionFavoriteMovies.classList.add("inactive");
   cardsHead.classList.remove("inactive");
   cardsCard.classList.remove("inactive");
   cardsHeadTitle.innerHTML = text;
@@ -79,17 +80,19 @@ function homePage() {
   headerContainer.classList.remove("inactive");
   sectionTrends.classList.remove("inactive");
   sectionCategories.classList.remove("inactive");
+  sectionFavoriteMovies.classList.remove("inactive");
   cardsHead.classList.add("inactive");
   cardsCard.classList.add("inactive");
   sectionFullInfo.classList.add("inactive");
   createTrendsPreview();
   getGenreButtons();
+  createFavoritesMovies();
 }
 
 function trendsPage() {
   activeInactive("Trending");
   getTrendingMovies();
-  infiniteScroll = getPaginatedMovies;
+  infiniteScroll = getPaginatedTrendingMovies;
 }
 
 function categoriesPage() {
@@ -113,6 +116,7 @@ function movieFullInfoPage() {
   sectionCategories.classList.add("inactive");
   cardsHead.classList.add("inactive");
   cardsCard.classList.add("inactive");
+  sectionFavoriteMovies.classList.add("inactive");
   sectionFullInfo.classList.remove("inactive");
 
   const movieId = location.hash.split("=");

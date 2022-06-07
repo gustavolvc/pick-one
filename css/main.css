@@ -189,15 +189,19 @@ body {
   left: 3px;
 }
 
-.main__trendsPreview {
+.main__trendsPreview,
+.main__likedMovies {
+  display: flex;
   margin-top: 5px;
   width: 100%;
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
+  align-items: center;
 }
 
-.main__trendsPreview--loading {
+.main__trendsPreview--loading,
+.main__likedMovies--loading {
   display: inline-block;
   border-radius: 20px;
   height: 230px;
@@ -212,7 +216,7 @@ body {
     var(--dark) 40%,
     var(--soft-gray) 50%,
     var(--dark) 60%
-  );  
+  );
   background-size: 200% 100%;
   animation: 1.5s shine linear infinite;
 }
@@ -222,6 +226,10 @@ body {
   border-radius: 20px;
   margin: 5px;
   box-shadow: 0 1px 5px 0 var(--light-green);
+}
+
+.main__trendsPreviewContainer {
+  position: relative;
 }
 
 .main_sectionCategories,
@@ -395,6 +403,10 @@ body {
   white-space: nowrap;
 }
 
+.main__infoRelatedMoviesContainer{
+  display: flex;
+}
+
 .main__infobackBtn {
   grid-area: back-btn;
   width: 100px;
@@ -479,14 +491,40 @@ body {
   animation: 1.5s shine linear infinite;
 }
 
-@keyframes loading-skeleton {
-  0%,
-  100% {
-    opacity: 100%;
-  }
-  50% {
-    opacity: 0%;
-  }
+.main_sectionFavoriteMovies {
+  position: relative;
+}
+
+.main__likedMoviesBtn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  height: 23px;
+  width: 23px;
+  border-radius: 23px;
+  background-color: var(--soft-gray);
+  box-shadow: 0 1px 5px var(--light-green);
+  font-size: 20px;
+  text-align: center;
+  opacity: 0.7;
+}
+
+.main__likedMoviesBtn:hover{
+  box-shadow: 1px 2px 5px var(--light-green);  
+  cursor: pointer;
+  opacity: 1;
+}
+
+.main__likedMoviesBtnIcon--liked{
+  color: var(--light-green);
+}
+
+.main__likedMoviesBtnIcon{
+  margin-top: 2px;
+}
+
+.main_sectionFavoriteMovies {
+  margin: 20px;
 }
 
 @keyframes shine {

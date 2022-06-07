@@ -14,6 +14,9 @@ const sectionCards = document.querySelector(
 const sectionCategories = document.querySelector(
   "#mainContainer .main_sectionCategories"
 );
+const sectionFavoriteMovies = document.querySelector(
+  "#mainContainer .main_sectionFavoriteMovies"
+);
 const sectionFullInfo = document.querySelector(
   "#mainContainer .main__fullInfo"
 );
@@ -30,6 +33,10 @@ const cardsHead = document.querySelector("#mainContainer .main__cardsHead");
 const fullInfoArticle = document.querySelector(
   "#mainContainer .main__fullInfoArticle"
 );
+const likedMovies = document.querySelector(
+  "#mainContainer .main__likedMovies"
+);
+
 
 const searchBtn = document.querySelector(
   "#headerContainer .header__containerIcon"
@@ -46,6 +53,9 @@ const cardsHeadTitle = document.querySelector(
 const backBtn = document.querySelector(
   "#mainContainer .main__backBtn"
 );
-const infoBackBtn = document.querySelector("#mainContainer .main__infoBackBtn");
-
+const infoBackBtn = document.querySelector(
+  "#mainContainer .main__infoBackBtn");
+const favoriteMoviesTitle = document.querySelector(
+  "#mainContainer .main_sectionFavoriteMovies .main_text"
+);
 
