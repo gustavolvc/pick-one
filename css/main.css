@@ -22,8 +22,8 @@ body {
 
 .body__goToTop {
   position: fixed;
-  bottom: 20px;
-  right: 10px;
+  bottom: 30px;
+  right: 25px;
   z-index: 99;
   cursor: pointer;
   font-size: 5rem;
