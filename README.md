@@ -15,3 +15,4 @@ App to consult movies, requesting them from the public API https://themoviedb.or
     * NAVIGATION WITH LOCATION (HASH)
     * LAZY LOADING WITH INTERCEPTION OBSERVER
     * INFINITE SCROLL
+    * LOCAL STORAGE
