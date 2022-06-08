@@ -20,6 +20,21 @@ body {
   font-family: var(--font-family-text);
 }
 
+.body__goToTop {
+  position: fixed;
+  bottom: 20px;
+  right: 10px;
+  z-index: 99;
+  cursor: pointer;
+  font-size: 5rem;
+  color: var(--light-green);
+  opacity: 0.6;
+  transition: all 0.4s;
+  box-shadow: 0 1px 5px 0 var(--light-green);
+  border-radius: 30px;
+  scroll-behavior: smooth;
+}
+
 .header {
   margin: 0 20px 12px 20px;
 }
@@ -403,7 +418,7 @@ body {
   white-space: nowrap;
 }
 
-.main__infoRelatedMoviesContainer{
+.main__infoRelatedMoviesContainer {
   display: flex;
 }
 
@@ -509,17 +524,17 @@ body {
   opacity: 0.7;
 }
 
-.main__likedMoviesBtn:hover{
-  box-shadow: 1px 2px 5px var(--light-green);  
+.main__likedMoviesBtn:hover {
+  box-shadow: 1px 2px 5px var(--light-green);
   cursor: pointer;
   opacity: 1;
 }
 
-.main__likedMoviesBtnIcon--liked{
+.main__likedMoviesBtnIcon--liked {
   color: var(--light-green);
 }
 
-.main__likedMoviesBtnIcon{
+.main__likedMoviesBtnIcon {
   margin-top: 2px;
 }
 

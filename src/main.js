@@ -444,10 +444,8 @@ function createFavoritesMovies() {
   favoriteMoviesTitle.innerText = "";
   const moviesList = likedMoviesList();
   let movies = Object.values(moviesList);
-  console.log(movies)
   if (movies.length > 0) {
     favoriteMoviesTitle.innerHTML = "Favorite Movies";
-    console.log(movies);
   }
   createImgList(movies, likedMovies, { lazyLoad: true });
 }

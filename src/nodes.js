@@ -3,6 +3,7 @@ const mainContainer = document.querySelector("#mainContainer");
 const footerContainer = document.querySelector("#footerContainer");
 const homeBtn = document.querySelector("#home");
 const headerInput = document.querySelector("#headerInput");
+const goToTop = document.querySelector("#goToTop");
 
 
 const sectionTrends = document.querySelector(

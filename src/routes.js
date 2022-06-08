@@ -29,6 +29,13 @@ backBtn.addEventListener("click", () => {
   }
   headerInput.value = "";
 });
+goToTop.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: "smooth",
+  });
+});
 
 // window.addEventListener("DOMContentLoaded", routing, false);
 window.addEventListener(
@@ -41,7 +48,21 @@ window.addEventListener(
 );
 window.addEventListener("hashchange", routing, false);
 window.addEventListener("scroll", infiniteScroll, false);
-
+window.addEventListener("scroll", () => {
+  if (
+    document.body.scrollTop > 400 ||
+    document.documentElement.scrollTop > 400
+  ) {
+    goToTop.classList.remove("inactive");
+  } else {
+    if (
+      document.body.scrollTop <= 400 ||
+      document.documentElement.scrollTop <= 400
+    ) {
+      goToTop.classList.add("inactive");
+    }
+  }
+});
 function routing() {
   if (infiniteScroll) {
     window.removeEventListener("scroll", infiniteScroll, { passive: false });
