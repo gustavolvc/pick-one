@@ -4,6 +4,7 @@ const footerContainer = document.querySelector("#footerContainer");
 const homeBtn = document.querySelector("#home");
 const headerInput = document.querySelector("#headerInput");
 const goToTop = document.querySelector("#goToTop");
+const lang = document.querySelector("#langId");
 
 
 const sectionTrends = document.querySelector(
