@@ -5,53 +5,20 @@ const api = axios.create({
   },
   params: {
     api_key: API_KEY,
-    language: getSelectedLanguageLS(),
+    language: localStorage.getItem("lang"),
   },
 });
 
-function getLanguagesListLS() {
-  const item = JSON.parse(localStorage.getItem("languagesMovies"));
-  return item ? item : {};
-}
-
-function getSelectedLanguageLS() {
-  const item = localStorage.getItem("selectedlanguage");
-  return item ? item : 'en';
-}
-
-async function getLanguagesList() {
-  let languagesListLS = getLanguagesListLS();
-  if (!languagesListLS.length) {
-    const { data } = await api("configuration/languages");
-    data.sort((a, b) => {
-      const nameA = a.english_name.toUpperCase();
-      const nameB = b.english_name.toUpperCase();
-      if (nameA < nameB) {
-        return -1;
-      }
-      if (nameA > nameB) {
-        return 1;
-      }
-      return 0;
-    });
-    localStorage.setItem("languagesMovies", JSON.stringify(data));
-    languagesListLS = data;   
+async function setDefaultLang() {   
+  if (!localStorage.getItem("lang")) {
     if (navigator.language.includes("-")) {
       const navLang = navigator.language.split("-");
-      localStorage.setItem("selectedlanguage", navLang[0]);
+      localStorage.setItem("lang", navLang[0]);
     } else {
-      localStorage.setItem("selectedlanguage", navigator.language);
-    } 
+      localStorage.setItem("lang", navigator.language);
+    }     
   } 
-  
- 
-  languagesListLS.forEach((language) => {
-    const option = document.createElement("option");
-    option.text = language.english_name;
-    option.value = language.iso_639_1;
-    lang.appendChild(option);
-  });
-  lang.value = getSelectedLanguageLS();    
+  lang.value = localStorage.getItem("lang");
 }
 
 function likedMoviesList() {

@@ -65,7 +65,7 @@ window.addEventListener("scroll", () => {
 });
 
 lang.addEventListener("change", () => {  
-  localStorage.setItem("selectedlanguage", lang.value);  
+  localStorage.setItem("lang", lang.value);  
   window.location.reload();
 });
 
@@ -111,7 +111,7 @@ function homePage() {
   cardsHead.classList.add("inactive");
   cardsCard.classList.add("inactive");
   sectionFullInfo.classList.add("inactive");
-  getLanguagesList();
+  setDefaultLang();
   createTrendsPreview();
   getGenreButtons();
   createFavoritesMovies();
