@@ -16,3 +16,4 @@ App to consult movies, requesting them from the public API https://themoviedb.or
     * LAZY LOADING WITH INTERCEPTION OBSERVER
     * INFINITE SCROLL
     * LOCAL STORAGE
+    * CHANGE LANGUAGE

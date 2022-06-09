@@ -61,3 +61,11 @@ const favoriteMoviesTitle = document.querySelector(
   "#mainContainer .main_sectionFavoriteMovies .main_text"
 );
 
+/* Language */
+const wordFind = document.querySelector("#headerContainer .header__text");
+const wordTrending = document.querySelector(
+  "#mainContainer .main_trendsText"
+);
+const wordCategories = document.querySelector(
+  "#mainContainer .main_sectionCategories .main_text"
+);

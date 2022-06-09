@@ -5,20 +5,38 @@ const api = axios.create({
   },
   params: {
     api_key: API_KEY,
-    language: localStorage.getItem("lang"),
+    language: localStorage.getItem("lang")
+      ? localStorage.getItem("lang")
+      : navigator.language[0] + navigator.language[1],
   },
 });
 
-async function setDefaultLang() {   
+async function getWords() {
+  const langWords = localStorage.getItem("lang");
+  const languagueTexts = await fetch("../src/lang.json");
+  const data = await languagueTexts.json();
+  return data[langWords];
+}
+
+async function setDefaultLang() {
   if (!localStorage.getItem("lang")) {
     if (navigator.language.includes("-")) {
       const navLang = navigator.language.split("-");
       localStorage.setItem("lang", navLang[0]);
     } else {
       localStorage.setItem("lang", navigator.language);
-    }     
-  } 
+    }
+  }
   lang.value = localStorage.getItem("lang");
+  const langWords = await getWords();
+  wordFind.innerText = langWords["Find your movies"];
+  headerInput.placeholder = langWords["Search Here ..."];
+  wordTrending.innerText = langWords["Trending"];
+  trendsBtn.innerHTML = `${langWords["See More"]}
+  <ion-icon class="main__trendsIcon" name="chevron-forward"></ion-icon>`;
+  wordCategories.innerText = langWords["Categories"];
+  backBtn.innerHTML = `<ion-icon class="main__backBtnIcon" 
+  name="chevron-back"></ion-icon> ${langWords["Back"]}`;
 }
 
 function likedMoviesList() {
@@ -107,11 +125,15 @@ function createImgList(movies, container, { lazyLoad = false }) {
   return container;
 }
 
-function createCardsMovies(movies, { lazyLoad = false, clean = true } = {}) {
+async function createCardsMovies(
+  movies,
+  { lazyLoad = false, clean = true } = {}
+) {
   if (clean) {
     cardsCard.innerHTML = "";
   }
   const moviesList = likedMoviesList();
+  const langWords = await getWords();
   movies.forEach((movie) => {
     const cardContainer = document.createElement("div");
     cardContainer.classList.add("main__cardContainer");
@@ -137,12 +159,13 @@ function createCardsMovies(movies, { lazyLoad = false, clean = true } = {}) {
     movieImg.addEventListener("click", () => {
       location.hash = "#movie=" + movie.id;
     });
+
     const cardContainerInfo = document.createElement("div");
     cardContainerInfo.classList.add("main__cardContainerInfo");
     const cardInfoPrimary = document.createElement("div");
     cardInfoPrimary.classList.add("main__cardInfoPrimary");
     const cardReleaseDate = document.createElement("p");
-    cardReleaseDate.innerText = "Release date:";
+    cardReleaseDate.innerText = langWords["Release date"] + ":";
     cardReleaseDate.classList.add("main__cardReleaseDate");
     const cardTitleText = document.createElement("p");
     cardTitleText.innerText = movie.title;
@@ -333,7 +356,7 @@ async function getRelatedMoviesId(id) {
 async function getMovieById(id) {
   fullInfoArticle.innerHTML = "";
   const { data: movie } = await api(`movie/${id}`);
-
+  const langWords = await getWords();
   const backPosterImg = document.createElement("img");
   backPosterImg.classList.add("main__infoBackPoster");
   backPosterImg.setAttribute("alt", movie.title);
@@ -410,15 +433,15 @@ async function getMovieById(id) {
   overview.classList.add("main__infoOverview");
 
   const releaseDate = document.createElement("p");
-  releaseDate.innerHTML = `<p class="main__infoSubTitle">Release date:</p> ${movie.release_date}`;
+  releaseDate.innerHTML = `<p class="main__infoSubTitle">${langWords["Release date"]}:</p> ${movie.release_date}`;
   releaseDate.classList.add("main__infoReleaseDate");
 
   const rateCount = document.createElement("p");
-  rateCount.innerHTML = `<p class="main__infoSubTitle">Rate count:</p> ${movie.vote_count}`;
+  rateCount.innerHTML = `<p class="main__infoSubTitle">${langWords["Rate count"]}:</p> ${movie.vote_count}`;
   rateCount.classList.add("main__infoRateCount");
 
   const recommendationsText = document.createElement("p");
-  recommendationsText.innerText = "Recommendations";
+  recommendationsText.innerText = langWords["Recommendations"];
   recommendationsText.classList.add("main__infoRelatedMoviesText");
 
   let infoRelatedMoviesContainer = await getRelatedMoviesId(id);
@@ -449,13 +472,14 @@ async function getMovieById(id) {
   fullInfoArticle.appendChild(btn);
 }
 
-function createFavoritesMovies() {
+async function createFavoritesMovies() {
   likedMovies.innerHTML = "";
   favoriteMoviesTitle.innerText = "";
   const moviesList = likedMoviesList();
   let movies = Object.values(moviesList);
   if (movies.length > 0) {
-    favoriteMoviesTitle.innerHTML = "Favorite Movies";
+    const langWords = await getWords();
+    favoriteMoviesTitle.innerHTML = langWords["Favorite Movies"];
   }
   createImgList(movies, likedMovies, { lazyLoad: true });
 }

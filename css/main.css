@@ -43,6 +43,7 @@ body {
   text-align: center;
   font-family: var(--font-family-title);
   cursor: pointer;
+  margin: 15px;
 }
 
 .header__title--bold-500,
@@ -62,6 +63,19 @@ body {
 
 .header__text--bold-600 {
   font-weight: 600;
+}
+.header__lang {
+  display: flex;
+  margin-top: 15px;
+  justify-content: end;
+}
+.header__select {
+  background-color: var(--dark);
+  color: var(--soft-white);
+  border-radius: 8px;
+  font-size: var(--sm);
+  border: 1px solid var(--dark);
+  outline: none;
 }
 
 .header__container {

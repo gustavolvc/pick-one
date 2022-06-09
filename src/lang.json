@@ -1,0 +1,86 @@
+{
+  "en": {
+    "Find your movies": "Find your movies",
+    "Search Here ...": "Search Here ...",
+    "Trending": "Trending",
+    "See More": "See More",
+    "Categories": "Categories",
+    "Favorite Movies": "Favorite Movies",
+    "Back": "Back",
+    "Release date": "Release date",
+    "Rate count": "Rate count",
+    "Recommendations": "Recommendations"
+  },
+  "fr": {
+    "Find your movies": "Trouvez vos films",
+    "Search Here ...": "Cherche ici ...",
+    "Trending": "Tendance",
+    "See More": "Voir plus",
+    "Categories": "Catégories",
+    "Favorite Movies": "Films préférés",
+    "Back": "Retour",
+    "Release date": "Date de sortie",
+    "Rate count": "Nombre de taux",
+    "Recommendations": "Recommandations"
+  },
+  "it": {
+    "Find your movies": "Trova i tuoi film",
+    "Search Here ...": "Cerca qui ...",
+    "Trending": "Tendenza",
+    "See More": "Vedi altro",
+    "Categories": "Categorie",
+    "Favorite Movies": "Film preferiti",
+    "Back": "Di ritorno",
+    "Release date": "Data di rilascio",
+    "Rate count": "Conteggio dei tassi",
+    "Recommendations": "Raccomandazioni"
+  },
+  "pt": {
+    "Find your movies": "Encontre seus filmes",
+    "Search Here ...": "Procure aqui ...",
+    "Trending": "Tendendo",
+    "See More": "Ver mais",
+    "Categories": "Categorias",
+    "Favorite Movies": "Filmes favoritos",
+    "Back": "De volta",
+    "Release date": "Data de lançamento",
+    "Rate count": "Contagem de taxa",
+    "Recommendations": "Recomendações"
+  },
+  "ru": {
+    "Find your movies": "Найдите свои фильмы",
+    "Search Here ...": "Поищи здесь ...",
+    "Trending": "В тренде",
+    "See More": "Узнать больше",
+    "Categories": "Категории",
+    "Favorite Movies": "Любимые фильмы",
+    "Back": "Назад",
+    "Release date": "Дата выхода",
+    "Rate count": "Количество ставок",
+    "Recommendations": "Рекомендации"
+  },
+  "es": {
+    "Find your movies": "Encuentra tus películas",
+    "Search Here ...": "Busca aquí ...",
+    "Trending": "Tendecia",
+    "See More": "Ver Más",
+    "Categories": "Categorías",
+    "Favorite Movies": "Películas Favoritas",
+    "Back": "Ir Atrás",
+    "Release date": "Fecha de estreno",
+    "Rate count": "Recuento de tasas",
+    "Recommendations": "Recomendaciones"
+  },
+  "tr": {
+    "Find your movies": "Filmlerinizi bulun",
+    "Search Here ...": "Burada ara ...",
+    "Trending": "Trend olan",
+    "See More": "Daha fazla gör",
+    "Categories": "Kategoriler",
+    "Favorite Movies": "Favori filmler",
+    "Back": "Geri",
+    "Release date": "Yayın tarihi",
+    "Rate count": "Oran sayısı",
+    "Recommendations": "öneriler"
+  }
+}
