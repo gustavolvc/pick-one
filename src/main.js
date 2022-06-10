@@ -455,7 +455,7 @@ async function getMovieById(id) {
     headerInput.value = "";
   });
   btn.innerHTML = `<ion-icon class="main__infobackBtnIcon" name="chevron-back"></ion-icon>
-     Back`;
+     ${langWords["Back"]}`;
 
   fullInfoArticle.appendChild(backPosterImg);
   fullInfoArticle.appendChild(posterImg);
