@@ -13,19 +13,29 @@
       href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&family=Roboto:wght@100;300;400&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="css/cellphone.css"
+      media="screen and (min-width:330px)"
+    />
+    <link
+      rel="stylesheet"
+      href="css/tablet-desktop.css"
+      media="screen and (min-width:440px)"
+    />
   </head>
   <body>
     <header id="headerContainer" class="header">
-      <div class="header__lang"> 
-      <select class="header__select" name="lang" id="langId">
-        <option value="en">🇺🇸 English</option>
-        <option value="fr">🇫🇷 French</option>
-        <option value="it">🇮🇹 Italian</option>
-        <option value="pt">🇵🇹 Portuguese</option>
-        <option value="ru">🇷🇺 Russian</option>
-        <option value="es">🇪🇸 Spanish</option>
-        <option value="tr">🇹🇷 Turkish</option>
-      </select>
+      <div class="header__lang">
+        <select class="header__select" name="lang" id="langId">
+          <option value="en">🇺🇸 English</option>
+          <option value="fr">🇫🇷 French</option>
+          <option value="it">🇮🇹 Italian</option>
+          <option value="pt">🇵🇹 Portuguese</option>
+          <option value="ru">🇷🇺 Russian</option>
+          <option value="es">🇪🇸 Spanish</option>
+          <option value="tr">🇹🇷 Turkish</option>
+        </select>
       </div>
       <h1
         id="home"
@@ -53,11 +63,17 @@
           <div class="main__trendsPreview--loading"></div>
           <div class="main__trendsPreview--loading"></div>
           <div class="main__trendsPreview--loading"></div>
+          <div class="main__trendsPreview--loading"></div>
+          <div class="main__trendsPreview--loading"></div>
+          <div class="main__trendsPreview--loading"></div>
         </article>
       </section>
       <section class="main_sectionCategories">
         <p class="main_text"></p>
         <article class="main__categories">
+          <div class="main__categories--loading"></div>
+          <div class="main__categories--loading"></div>
+          <div class="main__categories--loading"></div>
           <div class="main__categories--loading"></div>
           <div class="main__categories--loading"></div>
           <div class="main__categories--loading"></div>
@@ -69,26 +85,42 @@
           <button class="main__backBtn"></button>
         </article>
         <article class="main__cardsCard inactive">
-          <div class="main__cardsCard--loading">
-            <div class="main__cardsCardImg--loading"></div>
-            <div class="main__cardsCardText--loading"></div>
-            <div class="main__cardsCardText--loading"></div>
-          </div>
-          <div class="main__cardsCard--loading">
-            <div class="main__cardsCardImg--loading"></div>
-            <div class="main__cardsCardText--loading"></div>
-            <div class="main__cardsCardText--loading"></div>
-          </div>
-          <div class="main__cardsCard--loading">
-            <div class="main__cardsCardImg--loading"></div>
-            <div class="main__cardsCardText--loading"></div>
-            <div class="main__cardsCardText--loading"></div>
+          <div class="main__cardsCardContainer--loading">
+            <div class="main__cardsCard--loading">
+              <div class="main__cardsCardImg--loading"></div>
+              <div class="main__cardsCardText--loading"></div>
+              <div class="main__cardsCardText--loading"></div>
+            </div>
+            <div class="main__cardsCard--loading">
+              <div class="main__cardsCardImg--loading"></div>
+              <div class="main__cardsCardText--loading"></div>
+              <div class="main__cardsCardText--loading"></div>
+            </div>
+            <div class="main__cardsCard--loading">
+              <div class="main__cardsCardImg--loading"></div>
+              <div class="main__cardsCardText--loading"></div>
+              <div class="main__cardsCardText--loading"></div>
+            </div>
+            <div class="main__cardsCard--loading">
+              <div class="main__cardsCardImg--loading"></div>
+              <div class="main__cardsCardText--loading"></div>
+              <div class="main__cardsCardText--loading"></div>
+            </div>
+            <div class="main__cardsCard--loading">
+              <div class="main__cardsCardImg--loading"></div>
+              <div class="main__cardsCardText--loading"></div>
+              <div class="main__cardsCardText--loading"></div>
+            </div>
+            <div class="main__cardsCard--loading">
+              <div class="main__cardsCardImg--loading"></div>
+              <div class="main__cardsCardText--loading"></div>
+              <div class="main__cardsCardText--loading"></div>
+            </div>
           </div>
         </article>
       </section>
       <section class="main__fullInfo">
-        <article class="main__fullInfoArticle">
-          <div class="main__cardsCard--loading"></div>
+        <article class="main__fullInfoArticle">         
         </article>
       </section>
       <section class="main_sectionFavoriteMovies">
@@ -97,10 +129,13 @@
           <div class="main__likedMovies--loading"></div>
           <div class="main__likedMovies--loading"></div>
           <div class="main__likedMovies--loading"></div>
+          <div class="main__likedMovies--loading"></div>
+          <div class="main__likedMovies--loading"></div>
+          <div class="main__likedMovies--loading"></div>
         </article>
       </section>
     </main>
-    <footer id="footerContainer" class="footer"></footer>
+
     <ion-icon
       id="goToTop"
       class="body__goToTop inactive"

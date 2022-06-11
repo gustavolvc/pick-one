@@ -1,0 +1,37 @@
+.main__cardsContainer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.main__cardContainer {
+  flex-direction: column;
+}
+
+.main__cardImg {
+  width: 180px;
+  height: 270px;  
+  border-radius: 20px 20px 0 0;
+}
+
+.main__cardContainerInfo {
+ width: 180px;
+  height: 200px;
+  border-radius: 0 0 20px 20px;
+}
+
+.main__infoPoster{
+    height: 250px;
+     top: -190px;
+}
+
+.header__text{
+margin: 10px 10%;
+}
+
+.header__container{
+  margin: 0 10%;
+}
+
+.main_sectionCategories{
+  margin: 40px 20px;
+}

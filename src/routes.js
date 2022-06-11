@@ -115,6 +115,7 @@ function homePage() {
   createTrendsPreview();
   getGenreButtons();
   createFavoritesMovies();
+
 }
 
 function trendsPage() {

@@ -134,6 +134,8 @@ async function createCardsMovies(
   }
   const moviesList = likedMoviesList();
   const langWords = await getWords();
+  const cardsContainer = document.createElement("div");
+  cardsContainer.classList.add("main__cardsContainer");
   movies.forEach((movie) => {
     const cardContainer = document.createElement("div");
     cardContainer.classList.add("main__cardContainer");
@@ -176,9 +178,9 @@ async function createCardsMovies(
     const cardStar = document.createElement("ion-icon");
     cardStar.setAttribute("name", "star-sharp");
     cardStar.classList.add("main__cardStar");
-    const cardBookmark = document.createElement("ion-icon");
+    /*  const cardBookmark = document.createElement("ion-icon");
     cardBookmark.setAttribute("name", "bookmark-outline");
-    cardBookmark.classList.add("main__cardBookmark");
+    cardBookmark.classList.add("main__cardBookmark"); */
     const cardHeart = document.createElement("ion-icon");
     cardHeart.setAttribute("name", "heart-outline");
     cardHeart.classList.add("main__cardHeart");
@@ -209,14 +211,16 @@ async function createCardsMovies(
     cardInfoPrimary.appendChild(cardReleaseDate);
     cardInfoPrimary.appendChild(cardReleaseDateText);
     cardInfoSecundary.appendChild(cardInfoSecundaryStar);
-    cardInfoSecundary.appendChild(cardBookmark);
+    /* cardInfoSecundary.appendChild(cardBookmark); */
     cardInfoSecundary.appendChild(cardHeart);
     cardContainerInfo.appendChild(cardInfoPrimary);
     cardContainerInfo.appendChild(cardInfoSecundary);
     cardContainer.appendChild(movieImg);
     cardContainer.appendChild(cardContainerInfo);
-    cardsCard.appendChild(cardContainer);
+    cardsContainer.appendChild(cardContainer);
+   
   });
+   cardsCard.appendChild(cardsContainer);
 }
 
 async function createTrendsPreview() {
@@ -362,7 +366,7 @@ async function getMovieById(id) {
   backPosterImg.setAttribute("alt", movie.title);
   backPosterImg.setAttribute(
     "src",
-    `https://image.tmdb.org/t/p/w300${movie.backdrop_path}`
+    `https://image.tmdb.org/t/p/w500${movie.backdrop_path}`
   );
   backPosterImg.addEventListener("error", () => {
     backPosterImg.setAttribute(
@@ -371,6 +375,8 @@ async function getMovieById(id) {
     );
   });
 
+  const infoPosterContainer = document.createElement("figure");
+  infoPosterContainer.classList.add("main__infoPosterContainer");
   const posterImg = document.createElement("img");
   posterImg.classList.add("main__infoPoster");
   posterImg.setAttribute("alt", movie.title);
@@ -393,10 +399,10 @@ async function getMovieById(id) {
   cardReleaseDateText.innerText = movie.release_date;
   const cardStar = document.createElement("ion-icon");
   cardStar.setAttribute("name", "star-sharp");
-  const cardBookmark = document.createElement("ion-icon");
-  cardBookmark.setAttribute("name", "bookmark-outline");
+  /* const cardBookmark = document.createElement("ion-icon");
+  cardBookmark.setAttribute("name", "bookmark-outline"); */
   const cardHeart = document.createElement("ion-icon");
-  cardHeart.setAttribute("name", "heart-outline");
+
   const moviesList = likedMoviesList();
 
   if (moviesList[movie.id]) {
@@ -421,7 +427,7 @@ async function getMovieById(id) {
   infoIconsStarText.appendChild(cardStar);
   infoIconsStarText.appendChild(cardStarText);
   infoIcons.appendChild(infoIconsStarText);
-  infoIcons.appendChild(cardBookmark);
+  /* infoIcons.appendChild(cardBookmark); */
   infoIcons.appendChild(cardHeart);
 
   let infoGenres = document.createElement("div");
@@ -457,8 +463,9 @@ async function getMovieById(id) {
   btn.innerHTML = `<ion-icon class="main__infobackBtnIcon" name="chevron-back"></ion-icon>
      ${langWords["Back"]}`;
 
+  infoPosterContainer.appendChild(posterImg);
   fullInfoArticle.appendChild(backPosterImg);
-  fullInfoArticle.appendChild(posterImg);
+  fullInfoArticle.appendChild(infoPosterContainer);
   fullInfoArticle.appendChild(infoIcons);
   fullInfoArticle.appendChild(title);
   fullInfoArticle.appendChild(infoGenres);

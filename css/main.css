@@ -124,21 +124,27 @@ body {
   margin-bottom: 5px;
 }
 
-.main__categories::-webkit-scrollbar {
-  -webkit-appearance: none;
-  height: 3px;
-}
-
-.main__categories::-webkit-scrollbar-thumb {
-  background-color: #797979;
-  border-radius: 5px;
-}
-
 .main__categories {
   width: 100%;
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
+}
+
+.main__categories::-webkit-scrollbar,
+.main__trendsPreview::-webkit-scrollbar,
+.main__likedMovies::-webkit-scrollbar,
+.main__infoRelatedMovies::-webkit-scrollbar {
+  -webkit-appearance: none;
+  height: 6px;
+}
+
+.main__categories::-webkit-scrollbar-thumb,
+.main__trendsPreview::-webkit-scrollbar-thumb,
+.main__likedMovies::-webkit-scrollbar-thumb,
+.main__infoRelatedMovies::-webkit-scrollbar-thumb {
+  background-color: #797979;
+  border-radius: 5px;
 }
 
 .main__categoriesBtn {
@@ -199,6 +205,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 0 15px;
 }
 
 .main__trendsBtn,
@@ -210,7 +217,7 @@ body {
   font-size: var(--sm);
   color: var(--soft-white);
   border-radius: 16px;
-  text-align: center;
+  /* text-align: center; */
 }
 .main__trendsIcon {
   position: relative;
@@ -263,7 +270,7 @@ body {
 
 .main_sectionCategories,
 .main__sectionCards {
-  margin: 0 20px;
+  margin: 20px;
 }
 
 .main_cardsHeadTitle {
@@ -286,6 +293,7 @@ body {
   flex-direction: column;
   align-items: center;
   margin-bottom: 20px;
+  justify-content: center;
 }
 
 .main__cardImg {
@@ -360,18 +368,22 @@ body {
   object-fit: cover;
   width: 100%;
   border-radius: 0 0 15px 15px;
-  opacity: 0.5;
+  opacity: 0.7;
+  max-height: 350px;
 }
 
-.main__infoPoster {
+.main__infoPosterContainer {
   grid-area: poster;
+  position: relative;
+}
+.main__infoPoster {
   object-fit: contain;
   height: 150px;
   border-radius: 10px;
   box-shadow: 0 1px 2px 0 var(--light-green);
   margin-left: 15px;
   position: absolute;
-  top: 100px;
+  top: -90px;
   display: block;
 }
 
@@ -401,20 +413,20 @@ body {
 
 .main__infoOverview {
   grid-area: overview;
-  margin: 5px 15px;
+  margin: 10px 20px;
   text-align: justify;
   line-height: 1.5;
 }
 
 .main__infoReleaseDate {
   grid-area: release-date;
-  margin: 15px;
+  margin: 15px 0 15px 20px;
 }
 
 .main__infoRateCount {
   grid-area: rate-count;
   text-align: end;
-  margin: 15px;
+  margin: 15px 20px 15px 0;
 }
 
 .main__infoRelatedMoviesText {
@@ -465,6 +477,10 @@ body {
 
 .inactive {
   display: none;
+}
+.main__cardsCardContainer--loading {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .main__cardsCard--loading {

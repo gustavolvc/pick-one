@@ -1,0 +1,39 @@
+.header_select {
+  font-size: var(--md);
+}
+
+.header__title {
+  margin: 25px 0;
+}
+
+.header__container {
+  margin-bottom: 30px;
+}
+
+.main_trendsContainer {
+  margin-bottom: 12px;
+}
+
+.main__cardContainer {
+  flex-direction: row;
+  margin: 15px 15px;  
+}
+
+.main__cardImg {
+  height: 300px;
+  width: 250px;
+  border-radius: 20px 0 0 20px;
+}
+
+.main__cardContainerInfo {
+  height: 300px;
+  border-radius: 0 20px 20px 0;
+}
+
+.main__trendsPreviewImg {
+  height: 280px;
+}
+
+.main__cardsCard {
+  justify-content: center;
+}
