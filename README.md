@@ -17,3 +17,5 @@ App to consult movies, requesting them from the public API https://themoviedb.or
     * INFINITE SCROLL
     * LOCAL STORAGE
     * CHANGE LANGUAGE
+
+Link https://pickone-free.netlify.app/
