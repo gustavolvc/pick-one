@@ -1,24 +1,30 @@
 {
-  "name": "pick-one",
-  "version": "2.0.0",
-  "description": "Pick the movie you like the most from the list to watch it",
-  "main": "index.html",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/gustavolvc/pick-one.git"
-  },
-  "author": "Gustavo Yunier Leyte-Vidal Chacón <glcdmx@gmail.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/gustavolvc/pick-one/issues"
-  },
-  "homepage": "https://github.com/gustavolvc/pick-one#readme",
-  "devDependencies": {
-    "eslint": "^8.23.1",
-    "eslint-config-prettier": "^8.5.0",
-    "prettier": "^2.7.1"
-  }
+	"name": "pick-one",
+	"version": "2.0.0",
+	"description": "Pick the movie you like the most from the list to watch it",
+	"main": "index.html",
+	"scripts": {
+		"lint:fix": "eslint src/ --fix --ext .js,.jsx, ts",
+		"lint": "eslint .",
+		"prettier:fix": "prettier --write ."
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/gustavolvc/pick-one.git"
+	},
+	"author": "Gustavo Yunier Leyte-Vidal Chacón <glcdmx@gmail.com>",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/gustavolvc/pick-one/issues"
+	},
+	"homepage": "https://github.com/gustavolvc/pick-one#readme",
+	"devDependencies": {
+		"eslint": "^8.23.1",
+		"eslint-config-prettier": "^8.5.0",
+		"eslint-config-standard": "^17.0.0",
+		"eslint-plugin-import": "^2.26.0",
+		"eslint-plugin-n": "^15.2.5",
+		"eslint-plugin-promise": "^6.0.1",
+		"prettier": "^2.7.1"
+	}
 }
