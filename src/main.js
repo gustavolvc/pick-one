@@ -1,4 +1,3 @@
-const API_KEY = process.env.API_KEY;
 const api = axios.create({
 	baseURL: "https://api.themoviedb.org/3/",
 	headers: {
