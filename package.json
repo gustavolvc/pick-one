@@ -6,8 +6,7 @@
 	"scripts": {
 		"lint:fix": "eslint src/ --fix --ext .js,.jsx, ts",
 		"lint": "eslint .",
-		"prettier:fix": "prettier --write .",
-		"build": "node ./scripts/create-env.js"
+		"prettier:fix": "prettier --write ."
 	},
 	"repository": {
 		"type": "git",

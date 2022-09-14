@@ -19,5 +19,3 @@ App to consult movies, requesting them from the public API https://themoviedb.or
     * CHANGE LANGUAGE
 
 Link https://pickone-free.netlify.app/
-
-cd src && echo -e "const API_KEY = 'df7402dc7d41f52cebfb77662de77a1d';" > secrets.js
